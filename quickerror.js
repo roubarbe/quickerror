@@ -26,6 +26,7 @@ class QuickError extends HTMLElement {
 				    transform: translateX(-50%);
 				    width: min(500px, 90vw);
 				    animation: fadeInUp 0.2s ease-in-out;
+				    border-top: 1px solid rgb(255 179 187 / 0.43);
 				}
 				#error.closing {
 				   animation: fadeOutUp 0.2s ease-in-out forwards;
@@ -88,26 +89,44 @@ class QuickError extends HTMLElement {
 					padding-top: 0.33rem;
 					padding-bottom: 0.33rem;
 					font-weight: 700;
+					text-shadow: #7c242a 0rem 2px 0rem;
 				}
 			</style>
 			<div id="error">
 				<div id="gfx">
 					<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 						<title/>
+						<filter id="inset-shadow" x="-50%" y="-50%" width="200%" height="200%">
+							<feComponentTransfer in=SourceAlpha>
+								<feFuncA type="table" tableValues="1 0" />
+							</feComponentTransfer>
+							<feGaussianBlur stdDeviation="1.5"/>
+							<feOffset dx="0" dy="2" result="offsetblur"/>
+							<feFlood flood-color="rgba(0, 0, 0, 0.66)" result="color"/>
+							<feComposite in2="offsetblur" operator="in"/>
+							<feComposite in2="SourceAlpha" operator="in" />
+							<feMerge>
+								<feMergeNode in="SourceGraphic" />
+								<feMergeNode />
+							</feMerge>
+					  	</filter>
 						<g id="Complete">
 							<g id="x-circle">
-								<g>
+								<g filter="url(#inset-shadow)">
 									<circle 
 										cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" 
-										stroke="#431a1e" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+										stroke="#7c242a" stroke-linecap="round" stroke-linejoin="round" 
+										stroke-width="2"
 									/>
 									<line 
-										fill="none" stroke="#431a1e" stroke-linecap="round" stroke-linejoin="round" 
-										stroke-width="2" x1="14.5" x2="9.5" y1="9.5" y2="14.5"
+										fill="none" stroke="#7c242a" stroke-linecap="round" 
+										stroke-linejoin="round" stroke-width="2" x1="14.5" 
+										x2="9.5" y1="9.5" y2="14.5"
 									/>
 									<line 
-										fill="none" stroke="#431a1e" stroke-linecap="round" stroke-linejoin="round" 
-										stroke-width="2" x1="14.5" x2="9.5" y1="14.5" y2="9.5"
+										fill="none" stroke="#7c242a" stroke-linecap="round" 
+										stroke-linejoin="round" stroke-width="2" x1="14.5" 
+										x2="9.5" y1="14.5" y2="9.5"
 									/>
 								</g>
 							</g>
