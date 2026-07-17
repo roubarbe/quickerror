@@ -1,16 +1,12 @@
-# QuickError
-
-
-
-### What is it?
+## What is it?
 
 QuickError is a small web component you can just add to any static page.
 
 To me: its uses are mostly limited to testing APIs, fetch requests, etc.
 
+---
 
-
-### How do I set it up?
+## How do I set it up?
 
 First, make sure the quickerror.js file is imported/linked in your HTML file or project:
 
@@ -44,9 +40,9 @@ You'll notice there are three attributes in the previous example. All three are 
 
 You can then define and change any of these attributes at any moment using HTML or JavaScript!
 
+---
 
-
-### Is there a way for me to change the color scheme?
+## Is there a way for me to change the color scheme?
 
 Simply define **--qe-base** in your CSS like so:
 
