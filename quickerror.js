@@ -86,8 +86,8 @@ class QuickError extends HTMLElement {
 					text-transform: uppercase;
 					width: 66%;
 					background-color: transparent;
-					border: 1pt solid var(--qe-accent);
-					color: var(--qe-accent);
+					border: 1pt solid color-mix(in srgb, var(--qe-accent), white 20%);
+					color: color-mix(in srgb, var(--qe-accent), white 20%);
 					transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
 				}
 				button:hover{
