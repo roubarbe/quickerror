@@ -7,17 +7,33 @@ class QuickError extends HTMLElement {
 		this.shadowRoot.innerHTML = `
 			<style>
 				:host {
-				  display: none;
+					display: none;
+					--qe-bg: #b8324a;
+					--qe-bg-light: #c94f66;
+					--qe-border-accent: #da5362;
+					--qe-message-color: #ffdde0;
+					--qe-accent: #ffb3bb;
+					--qe-accent-dark: #431a1e;
+					--qe-icon-stroke: #7c242a;
+					--qe-shadow-color: rgba(0, 0, 0, 0.66);
 				}
 				:host([onscreen]) {
-				  display: flex;
+					display: flex;
 				}
+				
+				circle, line {
+					stroke: var(--qe-icon-stroke);
+				}
+				feFlood {
+					flood-color: var(--qe-shadow-color);
+				}
+				
 				#error{
 					display: flex;
 					flex-direction: row;
 					position: absolute;
 					align-items:stretch;
-					background-color: #b8324a;
+					background-color: var(--qe-bg);
 					border-radius: 0.33rem;
 					z-index: 1000;
 					box-shadow: 0 0 30px -10px #000;
@@ -26,52 +42,57 @@ class QuickError extends HTMLElement {
 				    transform: translateX(-50%);
 				    width: min(500px, 90vw);
 				    animation: fadeInUp 0.2s ease-in-out;
-				    border-top: 1px solid rgb(255 179 187 / 0.43);
+				    border-top: 1px solid color-mix(in srgb, var(--qe-accent) 43%, transparent);
 				}
 				#error.closing {
-				   animation: fadeOutUp 0.2s ease-in-out forwards;
+					animation: fadeOutUp 0.2s ease-in-out forwards;
 				}
+				
 				@keyframes fadeOutUp {
-				   from { opacity: 1; transform: translateX(-50%) translateY(0); }
-				   to { opacity: 0; transform: translateX(-50%) translateY(-30px); }
+					from { opacity: 1; transform: translateX(-50%) translateY(0); }
+					to { opacity: 0; transform: translateX(-50%) translateY(-30px); }
 				}
 				@keyframes fadeInUp {
-				   from { opacity: 0; transform: translateX(-50%) translateY(30px); }
-				   to { opacity: 1; transform: translateX(-50%) translateY(0); }
+					from { opacity: 0; transform: translateX(-50%) translateY(30px); }
+					to { opacity: 1; transform: translateX(-50%) translateY(0); }
 				}
+				
 				#message{
 					flex-grow: 1;
 					font-size: 0.8rem;
-					color: #ffdde0;
+					color: var(--qe-message-color);
 					margin-top: 0.66rem;
 					margin-bottom: 2rem;
 				}
+				
 				#main{
 					display: flex;
 					padding: 1rem;
 					flex-direction: column;
 					align-items: center;
 					width: 66%;
-					border-left: 1px solid #da5362;
+					border-left: 1px solid var(--qe-border-accent);
 					text-align: center;
 				}
+				
 				button {
-				  padding: 0.66rem 1.66rem;
-				  border-radius: 0.33rem;
-				  font-size: 0.75rem;
-				  font-weight: bold;
-				  text-transform: uppercase;
-				  width: 66%;
-				  background-color: transparent;
-				  border: 1pt solid #ffb3bb;
-				  color: #ffb3bb;
-				  transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+					padding: 0.66rem 1.66rem;
+					border-radius: 0.33rem;
+					font-size: 0.75rem;
+					font-weight: bold;
+					text-transform: uppercase;
+					width: 66%;
+					background-color: transparent;
+					border: 1pt solid var(--qe-accent);
+					color: var(--qe-accent);
+					transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
 				}
 				button:hover{
-					background-color: #ffb3bb;
-				    color: #431a1e;
+					background-color: var(--qe-accent);
+				    color: var(--qe-accent-dark);
 					cursor: pointer;
 				}
+				
 				svg{
 					width: 60%;
 				}
@@ -82,13 +103,14 @@ class QuickError extends HTMLElement {
 					flex-direction: column;
 					align-items: center;
 					justify-content: center;
-					background-image: linear-gradient(#c94f66, #b8324a);
+					background-image: linear-gradient(var(--qe-bg-light), var(--qe-bg));
 				}
+				
 				#title{
 					font-size: 1.1rem;
 					color: #FFF;
 					font-weight: 700;
-					text-shadow: #7c242a 0 2px 0;
+					text-shadow: color-mix(in srgb, var(--qe-accent-dark) 50%, transparent) 0 2px 0;
 				}
 			</style>
 			<div id="error">
@@ -101,7 +123,7 @@ class QuickError extends HTMLElement {
 							</feComponentTransfer>
 							<feGaussianBlur stdDeviation="1.5"/>
 							<feOffset dx="0" dy="2" result="offsetblur"/>
-							<feFlood flood-color="rgba(0, 0, 0, 0.66)" result="color"/>
+							<feFlood result="color"/>
 							<feComposite in2="offsetblur" operator="in"/>
 							<feComposite in2="SourceAlpha" operator="in" />
 							<feMerge>
@@ -114,16 +136,16 @@ class QuickError extends HTMLElement {
 								<g filter="url(#inset-shadow)">
 									<circle 
 										cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" 
-										stroke="#7c242a" stroke-linecap="round" stroke-linejoin="round" 
+										stroke-linecap="round" stroke-linejoin="round" 
 										stroke-width="2"
 									/>
 									<line 
-										fill="none" stroke="#7c242a" stroke-linecap="round" 
+										fill="none" stroke-linecap="round" 
 										stroke-linejoin="round" stroke-width="2" x1="14.5" 
 										x2="9.5" y1="9.5" y2="14.5"
 									/>
 									<line 
-										fill="none" stroke="#7c242a" stroke-linecap="round" 
+										fill="none" stroke-linecap="round" 
 										stroke-linejoin="round" stroke-width="2" x1="14.5" 
 										x2="9.5" y1="14.5" y2="9.5"
 									/>
