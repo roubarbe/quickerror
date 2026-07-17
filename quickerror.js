@@ -8,14 +8,17 @@ class QuickError extends HTMLElement {
 			<style>
 				:host {
 					display: none;
-					--qe-bg: #b8324a;
-					--qe-bg-light: #c94f66;
-					--qe-border-accent: #da5362;
-					--qe-message-color: #ffdde0;
-					--qe-accent: #ffb3bb;
-					--qe-accent-dark: #431a1e;
-					--qe-icon-stroke: #7c242a;
-					--qe-shadow-color: rgba(0, 0, 0, 0.66);
+					--qe-base: #b8324a;
+					
+					--qe-bg: var(--qe-base);
+					--qe-bg-light: color-mix(in srgb, var(--qe-base), white 15%);
+					--qe-border-accent: color-mix(in srgb, var(--qe-base), white 25%);
+					--qe-accent: color-mix(in srgb, var(--qe-base), white 65%);
+					--qe-accent-dark: color-mix(in srgb, var(--qe-base), black 55%);
+					--qe-message-color: color-mix(in srgb, var(--qe-base), white 80%);
+					--qe-icon-stroke: color-mix(in srgb, var(--qe-base), black 40%);
+					--qe-shadow-color: color-mix(in srgb, var(--qe-base), black 45%);
+					--qe-title-shadow: color-mix(in srgb, var(--qe-accent-dark) 50%, transparent);
 				}
 				:host([onscreen]) {
 					display: flex;

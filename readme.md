@@ -45,3 +45,17 @@ You'll notice there are three attributes in the previous example. All three are 
 You can then define and change any of these attributes at any moment using HTML or JavaScript!
 
 
+
+### Is there a way for me to change the color scheme?
+
+Simply define **--qe-base** in your CSS like so:
+
+```css
+quick-error.success {
+   --qe-base: #2a6b4a;
+}
+```
+
+
+
+
