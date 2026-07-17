@@ -1,4 +1,4 @@
-class ErrorMessage extends HTMLElement {
+class QuickError extends HTMLElement {
 	static observedAttributes = ["errtitle", "errmessage"];
 
 	constructor() {
@@ -167,4 +167,4 @@ class ErrorMessage extends HTMLElement {
 	}
 }
 
-customElements.define("error-msg", ErrorMessage);
+customElements.define("quick-error", QuickError);

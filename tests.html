@@ -5,12 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>error-msg</title>
         <link rel="stylesheet" href="styles/tests.css">
-        <script src="msgErreur.js"></script>
+        <script src="quickerror.js"></script>
     </head>
     <body>
         <header><h1>error-msg tests</h1></header>
         <main class="container">
-            <error-msg onscreen errtitle="Title is an error" errmessage="Title isn't valid, but this message ain't neither"></error-msg>
+            <quick-error
+                    onscreen
+                    errtitle="Title is an error"
+                    errmessage="Title isn't valid, but this message ain't neither">
+            </quick-error>
         </main>
     </body>
 </html>
