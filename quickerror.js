@@ -43,6 +43,8 @@ class QuickError extends HTMLElement {
 					flex-grow: 1;
 					font-size: 0.8rem;
 					color: #ffdde0;
+					margin-top: 0.66rem;
+					margin-bottom: 2rem;
 				}
 				#main{
 					display: flex;
@@ -60,7 +62,6 @@ class QuickError extends HTMLElement {
 				  font-weight: bold;
 				  text-transform: uppercase;
 				  width: 66%;
-				  margin-top: 2rem;
 				  background-color: transparent;
 				  border: 1pt solid #ffb3bb;
 				  color: #ffb3bb;
@@ -86,10 +87,8 @@ class QuickError extends HTMLElement {
 				#title{
 					font-size: 1.1rem;
 					color: #FFF;
-					padding-top: 0.33rem;
-					padding-bottom: 0.33rem;
 					font-weight: 700;
-					text-shadow: #7c242a 0rem 2px 0rem;
+					text-shadow: #7c242a 0 2px 0;
 				}
 			</style>
 			<div id="error">
