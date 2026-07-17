@@ -1,0 +1,35 @@
+@import "colors";
+@import "typography";
+@import "reset";
+
+body{
+	background-color: $color-background;
+	font-family: $main-font;
+	color: $color-text-primary;
+	font-size: $main-font-size;
+}
+
+header{
+	margin-top: 2rem;
+	h1{
+		text-align: center;
+	}
+}
+
+main{
+	.container{
+		background-color: $color-surface;
+	}
+
+}
+
+
+button{
+	background-color: $color-primary;
+	padding: 0.66rem 1.66rem;
+	border-radius: 0.33rem;
+	font-size: 0.75rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin: 1rem;
+}

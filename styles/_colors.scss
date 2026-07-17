@@ -1,0 +1,41 @@
+// ============================================
+// Palette — Midnight Violet / Blazing Flame
+// ============================================
+
+// Brand
+$color-background: #270722;   // Midnight Violet
+$color-surface:    #3A0F35;   // Deep Plum
+$color-primary:    #F15025;   // Blazing Flame
+$color-secondary:  #8C2F5E;   // Ember Rose
+
+// Sémantiques
+$color-success: #2E9E82; // Ember Teal
+$color-warning: #F2A93B; // Ember Gold
+$color-error:   #D62839; // Signal Red
+$color-info:    #6C63A6; // Dusk Violet
+
+// Texte
+$color-text-primary:   #F5F1F4; // Frost White
+$color-text-secondary: #B8A8B5; // Muted Mauve
+$color-text-disabled:  rgba($color-text-primary, 0.4);
+
+// Bordures
+$color-border: #4A1F45; // Violet Line
+$color-border-strong: rgba($color-text-primary, 0.16);
+
+// États interactifs (hover/active) dérivés de $color-primary
+$color-primary-hover:  darken($color-primary, 8%);
+$color-primary-active: darken($color-primary, 14%);
+$color-secondary-hover: lighten($color-secondary, 6%);
+
+// Map optionnelle, pratique pour boucler ou générer des classes utilitaires
+$colors: (
+        "background": $color-background,
+        "surface":    $color-surface,
+        "primary":    $color-primary,
+        "secondary":  $color-secondary,
+        "success":    $color-success,
+        "warning":    $color-warning,
+        "error":      $color-error,
+        "info":       $color-info,
+);
