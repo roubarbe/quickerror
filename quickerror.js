@@ -9,7 +9,7 @@ class QuickError extends HTMLElement {
 				:host {
 					display: none;
 					--qe-base: #b8324a;
-					
+
 					--qe-bg: var(--qe-base);
 					--qe-bg-light: color-mix(in srgb, var(--qe-base), white 15%);
 					--qe-border-accent: color-mix(in srgb, var(--qe-base), white 25%);
@@ -23,7 +23,7 @@ class QuickError extends HTMLElement {
 				:host([onscreen]) {
 					display: flex;
 				}
-				
+
 				circle, line {
 					stroke: var(--qe-icon-stroke);
 				}
@@ -31,26 +31,26 @@ class QuickError extends HTMLElement {
 					flood-color: var(--qe-shadow-color);
 				}
 				
-				#error{
+				#error {
 					display: flex;
 					flex-direction: row;
+					align-items: stretch;
 					position: absolute;
-					align-items:stretch;
 					background-color: var(--qe-bg);
 					border-radius: 0.33rem;
 					z-index: 1000;
 					box-shadow: 0 0 30px -10px #000;
 					left: 50%;
-				    top: 33%;
-				    transform: translateX(-50%);
-				    width: min(500px, 90vw);
-				    animation: fadeInUp 0.2s ease-in-out;
-				    border-top: 1px solid color-mix(in srgb, var(--qe-accent) 43%, transparent);
+					top: 33%;
+					transform: translateX(-50%);
+					width: min(500px, 90vw);
+					animation: fadeInUp 0.2s ease-in-out;
+					border-top: 1px solid color-mix(in srgb, var(--qe-accent) 43%, transparent);
 				}
 				#error.closing {
 					animation: fadeOutUp 0.2s ease-in-out forwards;
 				}
-				
+
 				@keyframes fadeOutUp {
 					from { opacity: 1; transform: translateX(-50%) translateY(0); }
 					to { opacity: 0; transform: translateX(-50%) translateY(-30px); }
@@ -59,25 +59,25 @@ class QuickError extends HTMLElement {
 					from { opacity: 0; transform: translateX(-50%) translateY(30px); }
 					to { opacity: 1; transform: translateX(-50%) translateY(0); }
 				}
-				
-				#message{
+
+				#message {
 					flex-grow: 1;
 					font-size: 0.8rem;
 					color: var(--qe-message-color);
 					margin-top: 0.66rem;
 					margin-bottom: 2rem;
 				}
-				
-				#main{
+
+				#main {
 					display: flex;
+					flex: 2 1 0;
 					padding: 1rem;
 					flex-direction: column;
 					align-items: center;
-					width: 66%;
 					border-left: 1px solid var(--qe-border-accent);
 					text-align: center;
 				}
-				
+
 				button {
 					padding: 0.66rem 1.66rem;
 					border-radius: 0.33rem;
@@ -90,17 +90,18 @@ class QuickError extends HTMLElement {
 					color: color-mix(in srgb, var(--qe-accent), white 20%);
 					transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
 				}
-				button:hover{
+				button:hover {
 					background-color: var(--qe-accent);
-				    color: var(--qe-accent-dark);
+					color: var(--qe-accent-dark);
 					cursor: pointer;
 				}
-				
-				svg{
-					width: 60%;
+
+				svg {
+					width: clamp(4rem, 60%, 5.5rem);
 				}
-				#gfx{
-					width: 33%;
+
+				#gfx {
+					flex: 1 1 0;
 					border-radius: 0.33rem 0 0 0.33rem;
 					display: flex;
 					flex-direction: column;
@@ -108,12 +109,27 @@ class QuickError extends HTMLElement {
 					justify-content: center;
 					background-image: linear-gradient(var(--qe-bg-light), var(--qe-bg));
 				}
-				
-				#title{
+
+				#title {
 					font-size: 1.1rem;
 					color: #FFF;
 					font-weight: 700;
 					text-shadow: color-mix(in srgb, var(--qe-accent-dark) 50%, transparent) 0 2px 0;
+				}
+
+				@media (max-width: 420px) {
+					#error {
+						flex-direction: column;
+					}
+
+					#gfx {
+						border-radius: 0.33rem 0.33rem 0 0;
+					}
+
+					#main {
+						border-left: 0;
+						border-top: 1px solid var(--qe-border-accent);
+					}
 				}
 			</style>
 			<div id="error">
